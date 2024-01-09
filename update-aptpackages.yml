@@ -1,6 +1,7 @@
-  hosts: "{{ Ansible }}"
+- hosts: all
 
   become: yes
+ 
   tasks:
     # Upgrade packages
     - name: upgrade apt packages

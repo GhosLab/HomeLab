@@ -28,13 +28,11 @@
         state: latest
         update_cache: true
         
-    - name: Update System Package Cache
-      apt: update_cache=yes
-      sudo: yes
-
-    - name: Upgrade System Packages
-      apt: upgrade=full
-      sudo: yes
+    - name: upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
 
     - name: Rebooting if needed...
       command: shutdown -r now removes=/var/run/reboot-required
